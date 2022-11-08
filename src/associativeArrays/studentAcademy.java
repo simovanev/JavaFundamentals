@@ -26,7 +26,7 @@ public class studentAcademy {
                 averageGradeStudent.put(studentName,studentGrade);
             }
         }
-averageGradeStudent.entrySet().forEach(e-> System.out.println(e.getKey()+" -> "+e.getValue()));
+averageGradeStudent.entrySet().forEach(e-> System.out.printf("%s -> %.2f\n",e.getKey(),e.getValue()));
 
     }
     private static Double averageGrade(ArrayList<Double> list){
