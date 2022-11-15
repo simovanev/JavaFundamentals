@@ -17,7 +17,7 @@ public class MultiplyBigNumber {
        if (remain>0){
            multiNum.append(remain);
        }
-       if (digit==0){
+       if (digit==0 ){
            System.out.println(0);
        }else {
         System.out.println(multiNum.reverse());
