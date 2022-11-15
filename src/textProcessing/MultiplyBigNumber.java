@@ -7,12 +7,22 @@ public class MultiplyBigNumber {
         Scanner scanner = new Scanner(System.in);
         String number = scanner.nextLine();
         int digit = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < number.length() - 1; i++) {
-            char item = number.toCharArray()[ (number.length() - 1)-i];
-            String multiplication = (int)item * digit + "";
-            char result= multiplication.toCharArray()[0];
+        StringBuilder multiNum = new StringBuilder();
+        int remain=0;
+        for (int i = number.length() - 1; i >= 0; i--) {
+            int currentNum = Integer.parseInt(String.valueOf(number.charAt(i))) * digit+remain;
+            remain = currentNum / 10;
+            multiNum.append(currentNum % 10);
         }
+       if (remain>0){
+           multiNum.append(remain);
+       }
+       if (digit==0){
+           System.out.println(0);
+       }else {
+        System.out.println(multiNum.reverse());
 
+       }
 
     }
 }
