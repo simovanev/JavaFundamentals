@@ -9,7 +9,7 @@ public class Race {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<String> input = Arrays.stream(scanner.nextLine().split(", ")).collect(Collectors.toList());
-        HashMap<String, Integer> contestantsMap = new HashMap<>();
+        Map<String, Integer> contestantsMap = new LinkedHashMap<>();
         for (int i = 0; i < input.size(); i++) {
             contestantsMap.putIfAbsent((input.get(i)), 0);
         }
@@ -24,13 +24,13 @@ public class Race {
             while (matcherName.find()) {
                 name.append(matcherName.group());
             }
-            if (contestantsMap.containsKey(name.toString())) {
-                Matcher matcherKm = patternKm.matcher(results);
                 int distance = 0;
+                Matcher matcherKm = patternKm.matcher(results);
                 while (matcherKm.find()) {
                     distance += Integer.parseInt(matcherKm.group());
-
                 }
+            if (contestantsMap.containsKey(name.toString())) {
+
                 contestantsMap.put(name.toString(), contestantsMap.get(name.toString()) + distance);
 
             }
@@ -44,7 +44,7 @@ public class Race {
                 contestantsMap.entrySet().stream()
                         .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                         .limit(3)
-                        .map(Map.Entry::getKey).
+                        .map(e->e.getKey()).
                         collect(Collectors.toList());
 
 
