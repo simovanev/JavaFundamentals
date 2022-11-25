@@ -10,14 +10,14 @@ public class PlantDiscovery {
         Scanner scanner = new Scanner(System.in);
         int n = Integer.parseInt(scanner.nextLine());
         Map<String, Integer> flowersRarity = new LinkedHashMap<>();
-        Map<String, Integer> flowerCounter = new HashMap<>();
+
         Map<String, Double> flowerRating = new HashMap<>();
         for (int i = 0; i < n; i++) {
             String[] input = scanner.nextLine().split("<->");
             String flower = input[0];
             int rarity = Integer.parseInt(input[1]);
             flowersRarity.put(flower, rarity);
-            flowerCounter.put(flower, 0);
+
             flowerRating.put(flower, 0.0);
         }
         String changes = scanner.nextLine();
@@ -32,8 +32,12 @@ public class PlantDiscovery {
                 switch (command) {
                     case "Rate":
                         double rating = Integer.parseInt(action[2]);
-                        flowerRating.put(plant, flowerRating.get(plant) + rating);
-                        flowerCounter.put(plant, flowerCounter.get(plant) + 1);
+                        if (flowerRating.get(plant)==0){
+                        flowerRating.put(plant, rating);
+
+                        }else flowerRating.put(plant,(flowerRating.get(plant)+ rating)/2);
+
+
 
                         break;
                     case "Update":
@@ -47,11 +51,9 @@ public class PlantDiscovery {
             }else  System.out.println("error");
             changes = scanner.nextLine();
         }
-        for (Map.Entry<String, Integer> count : flowerCounter.entrySet()) {
-            if (count.getValue()!=0){
-                flowerRating.put(count.getKey(),flowerRating.get(count.getKey())/count.getValue());
-            }
-        }
+
+
+
 
         System.out.println("Plants for the exhibition:");
         for (Map.Entry<String, Integer> item : flowersRarity.entrySet()) {
