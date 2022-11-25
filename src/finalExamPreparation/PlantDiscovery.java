@@ -47,10 +47,16 @@ public class PlantDiscovery {
             }else  System.out.println("error");
             changes = scanner.nextLine();
         }
+        for (Map.Entry<String, Integer> count : flowerCounter.entrySet()) {
+            if (count.getValue()!=0){
+                flowerRating.put(count.getKey(),flowerRating.get(count.getKey())/count.getValue());
+            }
+        }
+
         System.out.println("Plants for the exhibition:");
         for (Map.Entry<String, Integer> item : flowersRarity.entrySet()) {
             System.out.printf("- %s; Rarity: %d; Rating: %.2f\n", item.getKey(), item.getValue(),
-                    flowerRating.get(item.getKey())/flowerCounter.get(item.getKey()));
+                    flowerRating.get(item.getKey()));
         }
 
     }
