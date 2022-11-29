@@ -11,9 +11,9 @@ public class EmojiDetector {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String text = scanner.nextLine();
-        String regex = "([*:]{2})(?<word>[A-Z][a-z]{2,})\\1";
+        String regex = "(?<name>([*]{2})[A-Z][a-z]{2,}([*]{2})|([:]{2})[A-Z][a-z]{2,}([:]{2}))";
         Pattern digit = Pattern.compile("\\d");
-        long coolNumber = 1;
+        int coolNumber = 1;
         int counter = 0;
         List<String> coolList = new ArrayList<>();
         Pattern pattern = Pattern.compile(regex);
@@ -24,9 +24,9 @@ public class EmojiDetector {
         }
         while (matcher.find()) {
                 counter++;
-            String word = matcher.group("word");
+            String word = matcher.group();
             int sumText = 0;
-            for (int i = 0; i < word.length(); i++) {
+            for (int i = 2; i < word.length()-2; i++) {
                 sumText += word.charAt(i);
 
             }
