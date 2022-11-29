@@ -11,7 +11,7 @@ public class EmojiDetector {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String text = scanner.nextLine();
-        String regex = "(?<name>([*]{2})[A-Z][a-z]{2,}([*]{2})|([:]{2})[A-Z][a-z]{2,}([:]{2}))";
+        String regex = "([*]{2})[A-Z][a-z]{2,}([*]{2})|([:]{2})[A-Z][a-z]{2,}([:]{2})";
         Pattern digit = Pattern.compile("\\d");
         int coolNumber = 1;
         int counter = 0;
