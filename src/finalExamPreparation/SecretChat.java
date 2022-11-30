@@ -15,7 +15,7 @@ public class SecretChat {
             } else if (command.contains("Reverse")) {
                 String substring=command.split(":\\|:")[1];
                 if (message.toString().contains(substring)){
-                    message=new StringBuilder(message.toString().replace(substring,""));
+                    message=new StringBuilder(message.toString().replaceFirst(substring,""));
                     StringBuilder newSubstring=new StringBuilder(substring);
                     newSubstring.reverse();
                     message.append(newSubstring);
