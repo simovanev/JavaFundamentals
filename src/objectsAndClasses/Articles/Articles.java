@@ -12,17 +12,21 @@ public class Articles {
         this.author = author;
     }
 
-    public void edit(String content){
-        this.content=content;
-    }public void changeAuthor( String change){
-        this.author=change;
-    }public void rename(String title){
-        this.title=title;
+    public void edit(String content) {
+        this.content = content;
+    }
+
+    public void changeAuthor(String change) {
+        this.author = change;
+    }
+
+    public void rename(String title) {
+        this.title = title;
     }
 
     @Override
     public String toString() {
-        return  String.format("%s - %s: %s",this.title,this.content,this.author);
+        return String.format("%s - %s: %s", this.title, this.content, this.author);
 
     }
 }
