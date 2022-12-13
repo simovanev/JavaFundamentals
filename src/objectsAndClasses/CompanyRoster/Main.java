@@ -35,8 +35,14 @@ public class Main {
         String maxDepartment="";
         teamList.sort(Comparator.comparing(Company::getSalary).reversed());
         for (int i = 0; i < teamList.size(); i++) {
-            if (teamList.get(i).getSalary()>maxSalary){
-
+           String currentDep=teamList.get(i).getDepartment();
+           double currentSalary=Double.parseDouble(teamList.get(i).getDepartment());
+           int counter=1;
+            for (int j = i+1; j < teamList.size(); j++) {
+                if (teamList.get(j).getDepartment().equals(currentDep)){
+                    currentSalary+=Double.parseDouble(teamList.get(j).getDepartment());
+                    counter++;
+                }
             }
 
         }
