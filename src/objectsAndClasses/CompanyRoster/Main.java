@@ -42,6 +42,7 @@ public class Main {
                 if (teamList.get(j).getDepartment().equals(currentDep)){
                     currentSalary+=Double.parseDouble(teamList.get(j).getDepartment());
                     counter++;
+                    //to be continued
                 }
             }
 
