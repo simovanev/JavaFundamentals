@@ -15,7 +15,7 @@ public class Main {
             String input = scanner.nextLine();
 
             String name = input.split(" ")[0];
-            int salary = Integer.parseInt(input.split(" ")[1]);
+            double salary =Double.parseDouble(input.split(" ")[1]);
             String position = input.split(" ")[2];
             String department = input.split(" ")[3];
             String email = "n/a";
@@ -36,16 +36,27 @@ public class Main {
         teamList.sort(Comparator.comparing(Company::getSalary).reversed());
         for (int i = 0; i < teamList.size(); i++) {
            String currentDep=teamList.get(i).getDepartment();
-           double currentSalary=Double.parseDouble(teamList.get(i).getDepartment());
+           double currentSalary=teamList.get(i).getSalary();
            int counter=1;
             for (int j = i+1; j < teamList.size(); j++) {
                 if (teamList.get(j).getDepartment().equals(currentDep)){
-                    currentSalary+=Double.parseDouble(teamList.get(j).getDepartment());
+                    currentSalary+=teamList.get(j).getSalary();
                     counter++;
-                    //to be continued
+
                 }
+
+            }
+            if (currentSalary/counter>maxSalary){
+                maxSalary=currentSalary/counter;
+                maxDepartment=currentDep;
             }
 
+        }
+        System.out.printf("Highest Average Salary: %s\n",maxDepartment);
+        for (Company item: teamList){
+            if (item.getDepartment().equals(maxDepartment)){
+                System.out.println(item);
+            }
         }
     }
 }

@@ -3,13 +3,13 @@ package objectsAndClasses.CompanyRoster;
 public class Company {
 
     public String name;
-    public int salary;
+    public double salary;
     public String position;
     public String department;
     public String email;
     public int age;
 
-    public Company(String name,int salary,String position,String department,String email,int age) {
+    public Company(String name,double salary,String position,String department,String email,int age) {
         this.name = name;
         this.salary = salary;
         this.position = position;
@@ -26,7 +26,7 @@ public class Company {
         this.name = name;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -64,5 +64,10 @@ public class Company {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return  name + " " + salary +" " + email +  " " + age ;
     }
 }
