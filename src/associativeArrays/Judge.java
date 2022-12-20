@@ -30,8 +30,9 @@ public class Judge {
 
             input = scanner.nextLine();
         }
+
         for (Map.Entry<String, Map<String, Integer>> element : statistic.entrySet()) {
-            System.out.printf("%s: %d participants\n",element.getKey(),statistic.size());
+            System.out.printf("%s: %d participants\n",element.getKey(),element.getValue().size());
             for (Map.Entry<String, Integer> elementMap : element.getValue().entrySet()) {
                 int count=1;
                 System.out.printf("%d. %s <::> %d\n",count,elementMap.getKey(),elementMap.getValue());
