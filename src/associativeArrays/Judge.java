@@ -1,15 +1,14 @@
 package associativeArrays;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Stream;
 
 public class Judge {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Map<String, Map<String, Integer>> statistic = new LinkedHashMap<>();
-        Map<String, Integer> participants = new TreeMap<>();
+        Map<String, Integer> participants = new LinkedHashMap<>();
         String input = scanner.nextLine();
         while (!input.equals("no more time")) {
             //"{username} -> {contest} -> {points}
@@ -31,20 +30,23 @@ public class Judge {
             input = scanner.nextLine();
         }
 
+
         for (Map.Entry<String, Map<String, Integer>> element : statistic.entrySet()) {
             System.out.printf("%s: %d participants\n",element.getKey(),element.getValue().size());
+
             for (Map.Entry<String, Integer> elementMap : element.getValue().entrySet()) {
-                int count=1;
-                System.out.printf("%d. %s <::> %d\n",count,elementMap.getKey(),elementMap.getValue());
-                count++;
+                AtomicInteger count=new AtomicInteger(1);
+
+                System.out.printf("%d. %s <::> %d\n",count.getAndIncrement(),elementMap.getKey(),elementMap.getValue());
+
             }
 
         }
         System.out.println("Individual standings:");
         for (Map.Entry<String, Integer> students : participants.entrySet()) {
-            int count=1;
-            System.out.printf("%d. %s -> %d\n",count,students.getKey(),students.getValue());
-            count++;
+           AtomicInteger count=new AtomicInteger(1);
+            System.out.printf("%d. %s -> %d\n",count.getAndIncrement(),students.getKey(),students.getValue());
+
         }
 
 
